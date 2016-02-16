@@ -29,24 +29,23 @@ public class Main {
         for (Balloon each : things)
             // Don't print undefined elements
             if (each != null)
-                System.out.printf
-                        ("\nsize %d inches color is %s%n",
-                                each.getSize(),
-                                each.getColor());
+                System.out.println("\n" + each);
 
     }
 }
 
 class Balloon {
+    private static int quantity = 0;
     private int size;
     private String color;
-    private static int quantity = 0;
+    private boolean inflated;
 
 
     //Default constructor
     Balloon() {
         size = 10;
         color = "Orange";
+        inflated = false;
         quantity++;
     }
 
@@ -57,7 +56,7 @@ class Balloon {
         quantity++;
     }
 
-    // Return the size
+/*    // Return the size
     int getSize() {
         return size;
     }
@@ -65,7 +64,7 @@ class Balloon {
     // Return the color
     String getColor() {
         return color;
-    }
+    }*/
 
     // Return the number of balloons
     static int getQuantity() {
@@ -75,5 +74,25 @@ class Balloon {
     static void destroy(int i, Balloon[] arg) {
         quantity--;
         arg[i] = null;
+    }
+
+    // Return the inflation status
+    public boolean isInflated() {
+        return inflated;
+    }
+
+    // Set the inflation status
+    public void setInflated(boolean arg) {
+        this.inflated = arg;
+    }
+
+    // Provide a toString method
+    @Override
+    public String toString() {
+        return "Balloon{" +
+                "size=" + size +
+                ", color='" + color + '\'' +
+                ", " + (isInflated() ? " Inflated" : " Not Inflated") +
+                '}';
     }
 }
